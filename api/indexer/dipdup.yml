@@ -3,7 +3,7 @@ package: tzprofiles_indexer
 
 database:
   kind: postgres
-  host: ${PSQL_HOST:-db}
+  host: ${POSTGRES_HOST:-db}
   port: 5432
   user: ${POSTGRES_USER:-tzprofiles}
   password: ${POSTGRES_PASSWORD:-tzprofiles}
