@@ -38,51 +38,55 @@ services:
   indexer:
     image: ghcr.io/spruceid/tzp_indexer:latest
     build: ./indexer
-    depends_on:
-      - db
+    # depends_on:
+      # - db
       # - api
-      - hasura
+      # - hasura
     restart: always
-    # command: ["-c", "dipdup.yml", "-l", "debug.yml", "run"]
-    environment:
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-changeme}
-      - ADMIN_SECRET=${ADMIN_SECRET:-changeme}
-      - TZP_API=${TZP_API:-http://api:8080}
+    command: ["-c", "dipdup.yml", "-l", "debug.yml", "run"]
+    env_file:
+      - .env
+    # environment:
+    #   - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-tzprofiles}
+    #   - ADMIN_SECRET=${ADMIN_SECRET:-tzprofiles}
+    #  - TZP_API=${TZP_API:-https://api.tzkt.io}
       # - TZKT_URL=${TZKT_URL:-http://tzkt_api:5000/}
 
-  db:
-    image: postgres:13
-    restart: always
-    volumes:
-      - db:/var/lib/postgres/data
-    environment:
-      - POSTGRES_USER=dipdup
-      - POSTGRES_DB=dipdup
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-changeme}
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U dipdup"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+  # db:
+  #   image: postgres:13
+  #   restart: always
+  #   ports:
+  #     - 127.0.0.1:42001:5432
+  #   volumes:
+  #     - ./data/postgres:/var/lib/postgres/data
+  #   environment:
+  #     - POSTGRES_USER=dipdup
+  #     - POSTGRES_DB=dipdup
+  #     - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-tzprofiles}
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U dipdup"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
 
-  hasura:
-    image: hasura/graphql-engine:v2.0.7
-    ports:
-      - 127.0.0.1:42000:8080
-    depends_on:
-      - db
-    restart: always
-    healthcheck:
-      test: ['CMD', 'wget', '--quiet', '--spider', 'http://localhost:8080/healthz', '||', 'exit 1']
-      interval: 30s
-      timeout: 3s
-    environment:
-      - HASURA_GRAPHQL_DATABASE_URL=postgres://dipdup:${POSTGRES_PASSWORD:-changeme}@db:5432/dipdup
-      - HASURA_GRAPHQL_ENABLE_CONSOLE=true
-      - HASURA_GRAPHQL_DEV_MODE=false
-      - HASURA_GRAPHQL_ENABLED_LOG_TYPES=startup, http-log, webhook-log, websocket-log, query-log
-      - HASURA_GRAPHQL_ADMIN_SECRET=${ADMIN_SECRET:-changeme}
-      - HASURA_GRAPHQL_UNAUTHORIZED_ROLE=user
+  # hasura:
+  #   image: hasura/graphql-engine:v2.0.7
+  #   ports:
+  #     - 127.0.0.1:42000:8080
+  #   depends_on:
+  #     - db
+  #   restart: always
+  #   healthcheck:
+  #     test: ['CMD', 'wget', '--quiet', '--spider', 'http://localhost:8080/healthz', '||', 'exit 1']
+  #     interval: 30s
+  #     timeout: 3s
+  #   environment:
+  #     - HASURA_GRAPHQL_DATABASE_URL=postgres://dipdup:${POSTGRES_PASSWORD:-tzprofiles}@db:5432/dipdup
+  #     - HASURA_GRAPHQL_ENABLE_CONSOLE=true
+  #     - HASURA_GRAPHQL_DEV_MODE=false
+  #     - HASURA_GRAPHQL_ENABLED_LOG_TYPES=startup, http-log, webhook-log, websocket-log, query-log
+  #     - HASURA_GRAPHQL_ADMIN_SECRET=${ADMIN_SECRET:-tzprofiles}
+  #     - HASURA_GRAPHQL_UNAUTHORIZED_ROLE=user
 
   # api:
   #   image: ghcr.io/spruceid/tzp_api:latest
@@ -93,6 +97,6 @@ services:
   #   # environment:
   #   #   - DEBUG=express:*
 
-volumes:
-  db:
-  tzkt_db:
+# volumes:
+#   db:
+#   tzkt_db:
