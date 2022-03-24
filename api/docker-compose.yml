@@ -100,3 +100,8 @@ services:
 # volumes:
 #   db:
 #   tzkt_db:
+
+networks:
+  default:
+    external:
+      name: indexernet
