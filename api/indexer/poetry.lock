@@ -268,7 +268,7 @@ python-versions = "*"
 
 [[package]]
 name = "dipdup"
-version = "4.2.6"
+version = "4.0.0rc1"
 description = "Python SDK for developing indexers of Tezos smart contracts inspired by The Graph"
 category = "main"
 optional = false
@@ -281,18 +281,17 @@ anyio = ">=3.2.1,<4.0.0"
 APScheduler = ">=3.7.0,<4.0.0"
 asyncclick = ">=8.0.1,<9.0.0"
 asyncpg = ">=0.24.0,<0.25.0"
-datamodel-code-generator = ">=0.11.18,<0.12.0"
+datamodel-code-generator = ">=0.11.1,<0.12.0"
 fcache = ">=0.4.7,<0.5.0"
 pydantic = ">=1.8.1,<2.0.0"
 pyhumps = ">=3.0.2,<4.0.0"
-pysignalr = ">=0.1.1,<0.2.0"
+pysignalr = ">=0.1.0,<0.2.0"
 python-dotenv = ">=0.18.0,<0.19.0"
 "ruamel.yaml" = ">=0.17.2,<0.18.0"
 sentry-sdk = ">=1.1.0,<2.0.0"
 sqlparse = ">=0.4.1,<0.5.0"
 tabulate = ">=0.8.9,<0.9.0"
 tortoise-orm = "0.17.8"
-typing-inspect = ">=0.6.0,<0.7.0"
 
 [package.extras]
 pytezos = ["pytezos (>=3.2.4,<4.0.0)"]
@@ -830,18 +829,6 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
-name = "typing-inspect"
-version = "0.6.0"
-description = "Runtime inspection utilities for typing module."
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-mypy-extensions = ">=0.3.0"
-typing-extensions = ">=3.7.4"
-
-[[package]]
 name = "tzdata"
 version = "2022.1"
 description = "Provider of IANA time zone data"
@@ -901,7 +888,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "49bb6709a85a11432505c9dd0bd273802aaded6fdbf4be0568c31f41b0106f9b"
+content-hash = "c419395cd588f40e8d877be80f41ca531f52c9cba6bb6ef4508c3c284a8f2e6f"
 
 [metadata.files]
 aiohttp = [
@@ -1103,8 +1090,8 @@ didkit = [
     {file = "didkit-0.0.2-pp37-pypy37_pp73-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:29491ebd92849ce3b8e282f1cb2f8231c86600f2342f5f5ce110001f6c4e1996"},
 ]
 dipdup = [
-    {file = "dipdup-4.2.6-py3-none-any.whl", hash = "sha256:764fe217b2f275ae9bc9b70cd7d61cf6f4df02e3c3210ce370fd811f14282ecb"},
-    {file = "dipdup-4.2.6.tar.gz", hash = "sha256:c98ea68cbe81374df1bbe95515e14c361fc07253297cff70bc76059fc82caa92"},
+    {file = "dipdup-4.0.0rc1-py3-none-any.whl", hash = "sha256:a78d90584ee6ca058855cb336ff8a41b08d97e5b1953d8dacbe0475d42966c85"},
+    {file = "dipdup-4.0.0rc1.tar.gz", hash = "sha256:72dbba2d67acb0147afcd2037ca46d5f3d4dc20dfa89af948e78cbb62ebcee62"},
 ]
 dnspython = [
     {file = "dnspython-2.2.1-py3-none-any.whl", hash = "sha256:a851e51367fb93e9e1361732c1d60dab63eff98712e503ea7d92e6eccb109b4f"},
@@ -1581,11 +1568,6 @@ typed-ast = [
 typing-extensions = [
     {file = "typing_extensions-4.1.1-py3-none-any.whl", hash = "sha256:21c85e0fe4b9a155d0799430b0ad741cdce7e359660ccbd8b530613e8df88ce2"},
     {file = "typing_extensions-4.1.1.tar.gz", hash = "sha256:1a9462dcc3347a79b1f1c0271fbe79e844580bb598bafa1ed208b94da3cdcd42"},
-]
-typing-inspect = [
-    {file = "typing_inspect-0.6.0-py2-none-any.whl", hash = "sha256:de08f50a22955ddec353876df7b2545994d6df08a2f45d54ac8c05e530372ca0"},
-    {file = "typing_inspect-0.6.0-py3-none-any.whl", hash = "sha256:3b98390df4d999a28cf5b35d8b333425af5da2ece8a4ea9e98f71e7591347b4f"},
-    {file = "typing_inspect-0.6.0.tar.gz", hash = "sha256:8f1b1dd25908dbfd81d3bebc218011531e7ab614ba6e5bf7826d887c834afab7"},
 ]
 tzdata = [
     {file = "tzdata-2022.1-py2.py3-none-any.whl", hash = "sha256:238e70234214138ed7b4e8a0fab0e5e13872edab3be586ab8198c407620e2ab9"},
