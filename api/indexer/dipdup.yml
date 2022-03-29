@@ -73,8 +73,8 @@ indexes:
       #    - type: origination
       #      similar_to: tzprofile_old
 
-#advanced:
+advanced:
   # skip_hasura: True
   # postpone_jobs: True
   # early_realtime: True
-#  merge_subscriptions: True
+  merge_subscriptions: True
